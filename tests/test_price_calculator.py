@@ -1,3 +1,4 @@
+import pytest
 from price_calculator.price_calculator import PriceCalculator
 
 
@@ -39,3 +40,7 @@ class TestTotalPrice:
 
     def test_utah(self):
         assert self._calculator.total_value(1, 1.0, "UT") == 1.0685
+
+    def test_unknown_state(self):
+        with pytest.raises(ValueError):
+            self._calculator.total_value(1, 1.0, "NRW")
