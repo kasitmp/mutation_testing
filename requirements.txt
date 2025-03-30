@@ -1,3 +1,4 @@
 pytest
 ruff
 mutmut
+pre-commit
