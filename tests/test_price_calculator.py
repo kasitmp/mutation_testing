@@ -44,3 +44,12 @@ class TestTotalPrice:
     def test_unknown_state(self):
         with pytest.raises(ValueError):
             self._calculator.total_value(1, 1.0, "NRW")
+
+    def test_texas(self):
+        assert self._calculator.total_value(1, 1.0, "TX") == 1.0625
+
+    def test_alabama(self):
+        assert self._calculator.total_value(1, 1.0, "AL") == 1.04
+
+    def test_californiar(self):
+        assert self._calculator.total_value(1, 1.0, "CA") == 1.0825

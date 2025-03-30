@@ -1,5 +1,5 @@
 class PriceCalculator:
-    taxMap = dict(UT=0.0685, NV=0.08)
+    taxMap = dict(UT=0.0685, NV=0.08, TX=0.0625, AL=0.04, CA=0.0825)
 
     def order_value(self, count: int, price: float) -> float:
         return count * price
@@ -11,6 +11,4 @@ class PriceCalculator:
         if state not in list(self.taxMap):
             raise ValueError(f"Unsupported state: {state}")
         order_value = self.order_value(count, price)
-        if state == "UT":
-            return self.apply_tax(order_value)
-        return self.apply_tax(order_value, 0.08)
+        return self.apply_tax(order_value, self.taxMap[state])
